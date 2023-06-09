@@ -137,6 +137,8 @@ pushしたあとは、Repositoryページの[Actionsタブ](https://github.com/b
 
 ここでは、`post/2023-06-10-github-actions-organization-pages.md`を追加する場合を例にする。
 
+(注: mdファイルのヘッダにある`draft: true`部分を消すのを忘れないこと)
+
 {{<highlight bash>}}
 $ hugo new post/2023-06-10-github-actions-organization-pages.md
 $ emacs content/post/2023-06-10-github-actions-organization-pages.md
