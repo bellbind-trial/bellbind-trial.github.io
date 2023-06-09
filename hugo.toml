@@ -1,3 +1,20 @@
-baseURL = 'http://example.org/'
-languageCode = 'en-us'
-title = 'My New Hugo Site'
+baseURL = "/"
+languageCode = "ja-jp"
+title = "bellbind's trial"
+paginate = "10"
+theme = "binario"
+
+[Params]
+  mainSections = ["post"]
+  mathjax = true
+
+[Params.Breadcrumb]
+  enable = true
+  homeText = "/"
+
+[Params.Social]
+  twitter = "bellbind"
+  github = "bellbind"
+
+[outputs]
+  home = ["HTML", "RSS"]
