@@ -1,7 +1,6 @@
 ---
 title: "HugoサイトをGithub ActionsでOrganization用Github Pagesで公開する"
 date: 2023-06-10T00:39:49+09:00
-draft: true
 ---
 
 ローカルで編集したHugoサイトを、Github Actionsを使用してgithub上でビルドし、Organization用Github Pagesで公開する手順。
@@ -48,7 +47,6 @@ $ git commit
 $ git push origin HEAD
 {{</highlight>}}
 
-<!--
 以下の内容のHugoサイト用の`.gitignore`を追加しても良い
 (この`.gitignore`ファイルが有れば、オプションなしの`hugo`コマンドを実行したとき生成されるファイル群をRepositoryから除外することができる)
 
@@ -67,7 +65,6 @@ $ git add .gitignore
 $ git commit
 $ git push origin HEAD
 {{</highlight>}}
--->
 
 ## 3. RepositoryにGithub Actionsを加える
 
