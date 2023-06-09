@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>bellbind's trial</title><link>/</link><description>Recent content on bellbind's trial</description><generator>Hugo -- gohugo.io</generator><language>ja-jp</language><lastBuildDate>Fri, 09 Jun 2023 22:40:33 +0900</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml"/><item><title>最初のポスト</title><link>/post/2023-06-09-first-post/</link><pubDate>Fri, 09 Jun 2023 22:40:33 +0900</pubDate><guid>/post/2023-06-09-first-post/</guid><description>Hugoでの最初のポスト
+投稿のコマンド $ hugo new post/2023-06-09-first-post.md $ emacs content/post/2023-06-09-first-post.md $ hugo server -D (hugo serverの-Dオプションは、--buildDraftsのショートハンドで、ヘッダがdraft: trueなmdファイルもレンダリング対象にするもの)
+コードブロック構文 コードブロックのシンタックスハイライトでは、以下のような拡張構文を用いる(ただし、{と{の間の空白入れない)。
+{ {&amp;lt;highlight js&amp;gt;}} if (true) console.log(`Hello World!`); { {&amp;lt;/highlight&amp;gt;}} は、以下のように出力される。
+if (true) console.log(`Hello World!`); 対応言語は、hugoが使用しているchromaのものから選べる(JavaScriptは、jsでもJavaScriptでもよい)。
+https://github.com/alecthomas/chroma#supported-languages MathJax構文 数式コードブロックのmarkdownソース(要空行):
+$$ F(k) = \sum^{N-1}_{n=0} f(n) \exp({-2\pi i \over N} n k) $$ \\[ f(t) = {1 \over N} \sum^{N-1}_{n=0} F(n) \exp({2 \pi i \over N} n t) \\] 結果:
+$$ F(k) = \sum^{N-1}_{n=0} f(n) \exp({-2\pi i \over N} n k) $$</description></item></channel></rss>
