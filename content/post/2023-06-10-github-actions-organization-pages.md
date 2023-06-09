@@ -48,6 +48,7 @@ $ git commit
 $ git push origin HEAD
 {{</highlight>}}
 
+<!--
 以下の内容のHugoサイト用の`.gitignore`を追加しても良い
 (この`.gitignore`ファイルが有れば、オプションなしの`hugo`コマンドを実行したとき生成されるファイル群をRepositoryから除外することができる)
 
@@ -66,6 +67,7 @@ $ git add .gitignore
 $ git commit
 $ git push origin HEAD
 {{</highlight>}}
+-->
 
 ## 3. RepositoryにGithub Actionsを加える
 
