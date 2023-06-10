@@ -133,13 +133,13 @@ pushしたあとは、Repositoryページの[Actionsタブ](https://github.com/b
 
 - https://bellbind-trial.github.io/
 
-## 6. 記事の追加して更新する
+## 6. 記事を追加してgit pushで更新する
 
 ここでは、`post/2023-06-10-github-actions-organization-pages/index.md`を追加する場合を例にする。
 
-このindex.mdファイルには、埋め込む画像`~/Desktop/pages-branch-change.png`も加える。
+この`index.md`ファイルには、埋め込む画像`~/Desktop/pages-branch-change.png`も加える。
 
-(注: mdファイルのヘッダにある`draft: true`部分を消すのを忘れないこと)
+(注: `git push`する前に、mdファイルのヘッダに最初から含まれる **`draft: true`部分を消す**のを忘れないこと)
 
 {{<highlight bash>}}
 $ hugo new post/2023-06-10-github-actions-organization-pages/index.md
@@ -156,8 +156,8 @@ $ git push origin HEAD
 ![Setting - Pages - Branchをgh-pagesへ変更しSave](./pages-branch-change.png)
 {{</highlight>}}
 
-
-
-
 - 参考: [page bundles](https://gohugo.io/content-management/page-bundles/)
 
+記事を追加編集して`git add` - `git commit` - `git push`するたびに、githubの[Actionsタブ](https://github.com/bellbind-trial/bellbind-trial.github.io/actions)に、
+「pages build and deployment」という項目が追加され、hugoのページ生成とgh-pagesブランチへの反映が行われる。
+ページ生成処理が終了成功すると、その左に「緑✓」がつくので、その後すこしたてばGithub Pagesサイトに反映される。
