@@ -127,7 +127,7 @@ pushしたあとは、Repositoryページの[Actionsタブ](https://github.com/b
 デフォルトのGithub Pages用のブランチは`main`なので、この状態では、404 Not Foundのままである。
 そこで、`Settings`タブの`Pages`にある`Branch`を`gh-pages`に切り替える(`Save`)。
 
-![](/images/2023-06-10-pages-branch-change.png)
+![Setting - Pages - Branchをgh-pagesへ変更しSave](./pages-branch-change.png)
 
 しばらく待てば、Github Pagesにアクセス可能になる。
 
@@ -135,27 +135,29 @@ pushしたあとは、Repositoryページの[Actionsタブ](https://github.com/b
 
 ## 6. 記事の追加して更新する
 
-ここでは、`post/2023-06-10-github-actions-organization-pages.md`を追加する場合を例にする。
+ここでは、`post/2023-06-10-github-actions-organization-pages/index.md`を追加する場合を例にする。
+
+このindex.mdファイルには、埋め込む画像`~/Desktop/pages-branch-change.png`も加える。
 
 (注: mdファイルのヘッダにある`draft: true`部分を消すのを忘れないこと)
 
 {{<highlight bash>}}
-$ hugo new post/2023-06-10-github-actions-organization-pages.md
+$ hugo new post/2023-06-10-github-actions-organization-pages/index.md
+$ cp ~/Desktop/pages-branch-change.png content/post/2023-06-10-github-actions-organization-pages/
 $ emacs content/post/2023-06-10-github-actions-organization-pages.md
-$ git add content
-$ git commit
-$ git push origin HEAD
-{{</highlight>}}
-
-mdファイル中に埋め込む画像`~/Desktop/2023-06-10-pages-branch-change.png`も加える場合は、以下のようになる。
-
-{{<highlight bash>}}
-$ hugo new post/2023-06-10-github-actions-organization-pages.md
-$ emacs content/post/2023-06-10-github-actions-organization-pages.md
-$ mkdir -p static/images/
-$ cp ~/Desktop/2023-06-10-pages-branch-change.png static/images/
 $ git add content static
 $ git commit
 $ git push origin HEAD
 {{</highlight>}}
+
+この構造の場合、`index.md`内の画像リンクは以下のようになる。
+
+{{<highlight bash>}}
+![Setting - Pages - Branchをgh-pagesへ変更しSave](./pages-branch-change.png)
+{{</highlight>}}
+
+
+
+
+- 参考: [page bundles](https://gohugo.io/content-management/page-bundles/)
 
