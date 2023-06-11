@@ -2,7 +2,6 @@ baseURL = "/"
 languageCode = "ja-jp"
 title = "bellbind's trial"
 paginate = "10"
-theme = "binario"
 
 [Params]
   mainSections = ["post"]
@@ -18,3 +17,8 @@ theme = "binario"
 
 [outputs]
   home = ["HTML", "RSS"]
+
+[module]
+  [[module.imports]]
+    path = "github.com/vimux/binario"
+    
