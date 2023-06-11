@@ -3,9 +3,33 @@ languageCode = "ja-jp"
 title = "bellbind's trial"
 paginate = "10"
 
+[Author]
+  name = "bellbind"
+  bio = "https://github.com/bellbind"
+  avatar = "https://github.com/bellbind.png"
+
 [Params]
+  copyright = "bellbind"
+  colorTheme = "dark-blue"
   mainSections = ["post"]
+  dateFormat = "2006-01-02 (Mon)"
+  columns = 2
+  schema = true
+  opengraph = true
   mathjax = true
+  twitter_cards = true
+  mainMenuAlignment = "right"
+  authorbox = true
+  related = true
+  relatedMax = 5
+
+[Params.Entry]
+  meta = ["date", "categories", "tags"]
+  toc = true
+  tocOpen = true
+
+[Params.Featured]
+  previewOnly = false
 
 [Params.Breadcrumb]
   enable = true
