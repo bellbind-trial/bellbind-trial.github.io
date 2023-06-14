@@ -113,10 +113,9 @@ PoserShellのターミナルで、`hugo mod init github.com/bellbind-trial/hugo-
 
 ## 5.Hogoプロジェクトをgitリポジトリ化する
 
-重要: まず、vscodeの「設定」で、**「Files: Eol」を`\n`に変更** すること。
+重要: vscodeの「設定」で、**「Files: Eol」を`\n`に変更** すること。
 
 ![](./vsc-eol-setting.png)
-
 
 ----
 
@@ -227,6 +226,8 @@ jobs:
 ----
 
 ## 6. githubのプロジェクトページと同期させる
+
+(githubを使う大前提として、github上にアカウントがあり、sshの[公開鍵(`~/.ssh/id_rsa.pub`や`~/.ssh/id_ed25519.pub`など)を登録](https://docs.github.com/ja/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)してある必要がある。)
 
 - まず、github上に **空のプロジェクト** (READMEやLICENSE, .gitignoreはすべてNone)を作成し、git URLを控えておく
 - 「ソース管理」の右の「・・・」から、「リモート」- 「リモートの追加...」を選ぶ
