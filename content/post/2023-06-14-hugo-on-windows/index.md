@@ -18,7 +18,7 @@ Windows11上でHugoプロジェクトをセットアップし、Github Pagesへ�
 Invoke-Expression "& { $(Invoke-RestMethod https://aka.ms/install-powershell.ps1) } -UseMSI"
 ```
 
-- 5. Windows Terminalから、[chocolatyインストール](https://chocolatey.org/install): ページ中央にあるコマンドをコピーしてTerminalに貼り付けEnter
+- 5. Windows Terminalから、[chocolateyインストール](https://chocolatey.org/install): ページ中央にあるコマンドをコピーしてTerminalに貼り付けEnter
   - chocoコマンドがインストール済みなら、全パッケージアップグレード: `choco upgrade all -y` (入れてあったパッケージがメンテされなくなった等で更新中断の赤警告がなくなるまで繰り返す)
 
 ----
