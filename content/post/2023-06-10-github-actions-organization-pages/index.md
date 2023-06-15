@@ -1,6 +1,9 @@
 ---
 title: "HugoサイトをGithub ActionsでOrganization用Github Pagesで公開する"
 date: 2023-06-10T00:39:49+09:00
+tags:
+  - "hugo"
+  - "github"
 ---
 
 ローカルで編集したHugoサイトを、Github Actionsを使用してgithub上でビルドし、Organization用Github Pagesで公開する手順。

@@ -1,6 +1,11 @@
 ---
 title: "Windows11でhugoを使用する手順"
 date: 2023-06-14T14:03:21+09:00
+tags:
+  - "hugo"
+  - "hugo mod"
+  - "windows"
+  - "github"
 ---
 Windows11上でHugoプロジェクトをセットアップし、Github Pagesへの自動更新環境を作る方法。
 <!--more-->
@@ -251,3 +256,49 @@ jobs:
 
 ![](../2023-06-10-github-actions-organization-pages/pages-branch-change.png)
 
+----
+
+## A. githubのssh認証設定方法
+
+PowerShellターミナルで行う(vscode内のPowerShellでも可能)。
+
+### A.1. 公開鍵生成: `ssh-keygen`
+
+ssh用公開鍵を作成する。いまから作るのであれば、アルゴリズムは[`rsa`](https://tex2e.github.io/rfc-translater/html/rfc8017.html)よりも
+[`ed25519`](https://tex2e.github.io/rfc-translater/html/rfc8032.html)がよい。
+
+```pwsh
+ssh-keygen -t ed25519
+```
+
+以降、ファイル名やパスフレーズの入力を求められるが、文字は入れずに、生成がおわるまで全部**Enterキーのみ** を押しつづける。
+
+以下のファイルが作られる:
+
+- `~/.ssh/id_ed25519.pub`: 公開鍵テキストファイル
+- `~/.ssh/id_ed25519`: プライベート鍵テキストファイル(このファイルからは`ssh-keygen -y`コマンドで公開鍵テキストも取り出せる)
+
+### A.2. 公開鍵のテキストをクリップボードにコピー: `clip`
+
+Windows11が備えるクリップボードへのコピーを行うコマンドは **`clip`** 。
+
+```pwsh
+cat ~/.ssh/id_ed25519.pub | clip
+```
+
+このコマンドで、公開鍵ファイルの内容を、Ctrl+Vで、テキストエリアに貼り付けられるようになる。
+
+### A.3. githubへ公開鍵を登録
+
+サインインしたgithubのWebページの右のユーザーアイコン右の「▽」から「 **Settings** 」メニューを開き、左のリストの「 **SSH and GPG Keys** 」を開く。
+
+この設定ページ内の「SSH keys」の右にある「 **New SSH key**」ボタンを押す。
+
+![](./gh-settings-keys.png)
+
+入力項目が「Title」、「Key type」、「Key」とあるうちの **「Key」テキストエリア** に、Ctrl+Vで先ほどコピーした公開鍵テキストを貼り付け、
+**「Add SSH key」ボタン** を押す(Titleは空欄、Key typeはAuthentication Keyのままでよい)。
+
+![](./gh-ssh-add.png)
+
+すると`Authentication Keys`に公開鍵が追加される。

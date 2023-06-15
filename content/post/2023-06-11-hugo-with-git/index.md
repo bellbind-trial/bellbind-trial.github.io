@@ -1,6 +1,9 @@
 ---
 title: "git管理前提のhugoプロジェクトの作り方"
 date: 2023-06-11T09:06:19+09:00
+tags:
+  - "hugo"
+  - "git"
 ---
 Github ActionsでGithub Pagesを更新させるために、そのWebページのソースとなるHugoプロジェクトを作ったあと、gitリポジトリ化する手順。
 <!--more-->
