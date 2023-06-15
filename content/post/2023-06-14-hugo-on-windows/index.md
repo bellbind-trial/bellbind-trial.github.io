@@ -219,9 +219,15 @@ jobs:
 
 ![](./vsc-git-init.png)
 
-作成後、PowerShellのターミナルで、`git config user.name`と`git config user.email`を設定しておく必要もある。
+リポジトリ作成後、PowerShellのターミナルで、`git config user.name`と`git config user.email`を設定しておく必要もある。
 
 - 参考: https://codelikes.com/git-config/
+```powershell
+git config user.name "githubで使っているユーザー名"
+git config user.email "githubへ登録したメールアドレス"
+```
+
+(globalで設定してあれば不要)
 
 ----
 
@@ -325,6 +331,7 @@ cat ~/.ssh/id_ed25519.pub | clip
 ![](./gh-ssh-add.png)
 
 すると`Authentication Keys`に公開鍵が追加される。
+この結果、このマシンから、githubへpushすることができるようになる。
 
 ----
 
