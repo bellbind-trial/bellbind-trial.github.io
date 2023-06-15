@@ -30,18 +30,24 @@ Invoke-Expression "& { $(Invoke-RestMethod https://aka.ms/install-powershell.ps1
 
 ## 1. 必要なchocoパッケージのインストール
 
-Windows Terminal(でPowerShell)を立ち上げ、以下のコマンドで必要なパッケージをインストールする:
+「 **管理者として実行** 」によって、Windows Terminal(でPowerShell)を立ち上げる。
+
+- 「ターミナル」アイコンの上で右クリックすることで、コンテキストメニューを開く
+
+![](./win-term-admin.png)
+
+
+ターミナル上で、以下のコマンドで必要なパッケージをインストールする:
 
 ```pwsh
-choco install -y git golang hugo vscode
+choco install -y git golang hugo hugo-extended vscode
 ```
 
 - git
 - golang
 - hugo
+- hugo-extended
 - vscode
-
-(注: テーマによってはsassなど他のツールがさらに必要になるものもある)
 
 記事編集環境としてvscode([Visual Studio Code](https://github.com/microsoft/vscode) )を使用する。
 
@@ -66,8 +72,10 @@ Hugoのためには、以下の拡張機能をインストールしておく:
 
 ## 3. Hogoプロジェクトのセットアップ
 
-- Githubユーザー(もしくはOrganization)名とリポジトリ名をもとに、Hugoプロジェクトの[Mod ID](../2023-06-12-hugo-mod/)を決める。以降のMod ID例: `github.com/bellbind-trial/hugo-on-windows`
-- Hogoプロジェクトにする空ディレクトリを作成する: ディレクトリ名の例 `hugo-on-windows`
+- Githubユーザー(もしくはOrganization)名とリポジトリ名をもとに、Hugoプロジェクトの[Mod ID](../2023-06-12-hugo-mod/)を決める
+  - 以降の例でのMod ID: `github.com/bellbind-trial/hugo-on-windows`
+- Hogoプロジェクトにする空ディレクトリを作成する
+  - Hugoプロジェクト例のディレクトリ名: `hugo-on-windows`
 
 vscodeを立ち上げ、、Hogoプロジェクトディレクトリを開く:  左上「≡」 -「ファイル」-「フォルダーを開く...」
 
@@ -91,9 +99,9 @@ PoserShellのターミナルで、`hugo mod init github.com/bellbind-trial/hugo-
 
 ### 3.3. `hugo.toml`でテーマのModを加えhugo serverを実行
 
-- 1. `content/`フォルダと、テーマのMod IDをセットした`hugo.toml`ファイルを作成する
-  - 例: https://themes.gohugo.io/themes/poison/ : テーマの「Download」のgit URLからMod IDは `github.com/lukeorth/poison`を用いる
-- 2. PowerShellのターミナルで、`hugo server`を実行する
+1. `content/`フォルダと、テーマのMod IDをセットした`hugo.toml`ファイルを作成する
+    - 例: https://themes.gohugo.io/themes/poison/ : テーマの「Download」のgit URLからMod IDは `github.com/lukeorth/poison`を用いる
+2. PowerShellのターミナルで、`hugo server`を実行する
 
 ![hugo mod init](./vsc-hugo-server.png)
 
@@ -105,10 +113,10 @@ PoserShellのターミナルで、`hugo mod init github.com/bellbind-trial/hugo-
 
 例として、記事`posts/first-post/index.md`を作成する。
 
-- 1. PowerShellの「+」でターミナルを追加する
-- 2. 新たに開いたTerminal `pwsh`で、`hugo new posts/first-post/index.md`を実行する
-- 3. 左の「エクスプローラー」から、`content/`フォルダを開き、`index.md`を編集する
-- 4. ブラウザで記事が追加されていることを確認する
+1. PowerShellの「+」でターミナルを追加する
+2. 新たに開いたTerminal `pwsh`で、`hugo new posts/first-post/index.md`を実行する
+3. 左の「エクスプローラー」から、`content/`フォルダを開き、`index.md`を編集する
+4. ブラウザで記事が追加されていることを確認する
 
 ![new post](./vsc-new-post.png)
 
@@ -116,7 +124,7 @@ PoserShellのターミナルで、`hugo mod init github.com/bellbind-trial/hugo-
 
 ----
 
-## 5.Hogoプロジェクトをgitリポジトリ化する
+## 5.Hugoプロジェクトをgitリポジトリ化する
 
 重要: vscodeの「設定」で、**「Files: Eol」を`\n`に変更** すること。
 
