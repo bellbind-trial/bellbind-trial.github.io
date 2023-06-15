@@ -14,17 +14,17 @@ Windows11上でHugoプロジェクトをセットアップし、Github Pagesへ�
 
 ## 0. Windows11上での事前準備
 
-- 1. Windows Updateを全更新の適用完了させる
-- 2. Microsoft Storeのパッケージアップデート:  左下「ライブラリ」より行える
-- 3. Microsoft Storeから、[Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701)のインストール: Microsoft Storeで「Terminal」で検索
-- 4. Windows Terminalから、[PowerShellを最新版にアップデート](https://qiita.com/probabilityhill/items/f56c9b2882936c296c0e): 現時点の最新バージョンは7.3.4
+1. Windows Updateを全更新の適用完了させる
+2. Microsoft Storeのパッケージアップデート:  左下「ライブラリ」より行える
+3. Microsoft Storeから、[Windows Terminal](https://apps.microsoft.com/store/detail/windows-terminal/9N0DX20HK701)のインストール: Microsoft Storeで「Terminal」で検索
+4. Windows Terminalから、[PowerShellを最新版にアップデート](https://qiita.com/probabilityhill/items/f56c9b2882936c296c0e): 現時点の最新バージョンは7.3.4
 
 ```powershell
 Invoke-Expression "& { $(Invoke-RestMethod https://aka.ms/install-powershell.ps1) } -UseMSI"
 ```
 
-- 5. Windows Terminalから、[chocolateyインストール](https://chocolatey.org/install): ページ中央にあるコマンドをコピーしてTerminalに貼り付けEnter
-  - chocoコマンドがインストール済みなら、全パッケージアップグレード: `choco upgrade all -y` (入れてあったパッケージがメンテされなくなった等で更新中断の赤警告がなくなるまで繰り返す)
+5. Windows Terminalから、[chocolateyインストール](https://chocolatey.org/install): ページ中央にあるコマンドをコピーしてTerminalに貼り付けEnter
+    - chocoコマンドがインストール済みなら、全パッケージアップグレード: `choco upgrade all -y` (入れてあったパッケージがメンテされなくなった等で更新中断の赤警告がなくなるまで繰り返す)
 
 ----
 
@@ -39,7 +39,7 @@ Invoke-Expression "& { $(Invoke-RestMethod https://aka.ms/install-powershell.ps1
 
 ターミナル上で、以下のコマンドで必要なパッケージをインストールする:
 
-```pwsh
+```powershell
 choco install -y git golang hugo hugo-extended vscode
 ```
 
@@ -72,10 +72,10 @@ Hugoのためには、以下の拡張機能をインストールしておく:
 
 ## 3. Hogoプロジェクトのセットアップ
 
-- Githubユーザー(もしくはOrganization)名とリポジトリ名をもとに、Hugoプロジェクトの[Mod ID](../2023-06-12-hugo-mod/)を決める
-  - 以降の例でのMod ID: `github.com/bellbind-trial/hugo-on-windows`
+- Githubユーザー(もしくはOrganization)名とリポジトリ名をもとに、Hugoプロジェクトの[Mod ID](../2023-06-12-hugo-mod/)(github上のプロジェクトのURLに基づくユニーク名)を決める
+  - `github.com/bellbind-trial/hugo-on-windows`: 以降のHugoプロジェクト例のMod ID
 - Hogoプロジェクトにする空ディレクトリを作成する
-  - Hugoプロジェクト例のディレクトリ名: `hugo-on-windows`
+  - `hugo-on-windows`: Hugoプロジェクト例のディレクトリ名
 
 vscodeを立ち上げ、、Hogoプロジェクトディレクトリを開く:  左上「≡」 -「ファイル」-「フォルダーを開く...」
 
@@ -91,7 +91,12 @@ PowerShellを開くと左の「エクスプローラー」が「COMMAND EXPLORER
 
 ### 3.2. PowerShellのターミナル内で`hugo mod init ...`実行
 
-PoserShellのターミナルで、`hugo mod init github.com/bellbind-trial/hugo-on-windows` を実行する(注: Mod IDは各自適切な名前にすること)
+PoserShellのターミナルで、以下のコマンドを実行
+
+```powershell
+hugo mod init github.com/bellbind-trial/hugo-on-windows
+```
+(注: Mod IDは各自適切な名前にすること)
 
 ![hugo mod init](./vsc-hugo-mod-init.png)
 
@@ -101,7 +106,11 @@ PoserShellのターミナルで、`hugo mod init github.com/bellbind-trial/hugo-
 
 1. `content/`フォルダと、テーマのMod IDをセットした`hugo.toml`ファイルを作成する
     - 例: https://themes.gohugo.io/themes/poison/ : テーマの「Download」のgit URLからMod IDは `github.com/lukeorth/poison`を用いる
-2. PowerShellのターミナルで、`hugo server`を実行する
+2. PowerShellのターミナルで、`hugo server`を実行する(hugo serverを実行しているPowerShellウインドウは閉じないこと)
+
+```powershell
+hugo server
+```
 
 ![hugo mod init](./vsc-hugo-server.png)
 
@@ -114,7 +123,12 @@ PoserShellのターミナルで、`hugo mod init github.com/bellbind-trial/hugo-
 例として、記事`posts/first-post/index.md`を作成する。
 
 1. PowerShellの「+」でターミナルを追加する
-2. 新たに開いたTerminal `pwsh`で、`hugo new posts/first-post/index.md`を実行する
+2. 新たに開いたターミナルで、`hugo new posts/first-post/index.md`を実行する
+
+```powershell
+hugo new posts/first-post/index.md
+```
+
 3. 左の「エクスプローラー」から、`content/`フォルダを開き、`index.md`を編集する
 4. ブラウザで記事が追加されていることを確認する
 
@@ -134,7 +148,7 @@ PoserShellのターミナルで、`hugo mod init github.com/bellbind-trial/hugo-
 
 ### 5.1. `.gitignore` ファイルを作成
 
-`gitignore`ファイルの内容: 
+`.gitignore`ファイルの内容: 
 
 ```txt
 /public/
@@ -150,7 +164,7 @@ hugo_stats.json
 
 `.github/workflows/gh-pages.yml`ファイルの内容:
 
-```
+```yaml
 name: GitHub Pages
 
 on:
@@ -201,7 +215,7 @@ jobs:
 ### 5.3. gitリポジトリ作成(git initのGUI)
 
 - フォルダーにリポジトリ(`.git/`)がなければ、左の「ソース管理」ボタンを選ぶと、「リポジトリ初期化」ボタンが出てくる
-- 「リポジトリ初期化」ボタンを押すと、`.git/`以下が作られ、以降git機能をつかうことができるようになる
+  - 「リポジトリ初期化」ボタンを押すと、`.git/`以下が作られ、以降gitリポジトリ管理の機能が使用可能になる
 
 ![](./vsc-git-init.png)
 
@@ -225,10 +239,10 @@ jobs:
 
 ### 5.5. コミット
 
-- ステージに追加したファイルは、ファイルの右が「U」から「A」(「追加済み」の意味)になる  
-- 追加後、「コミット」ボタンを押すと、`COMMIT_EDITMSG`ファイルの編集が開く
-- ファイル内にコミットメッセージを埋め、**「保存」** する
-- 右上の「✓」ボタンを押すことでコミットが完了する
+1. ステージに追加したファイルは、ファイルの右が「U」から「A」(「追加済み」の意味)になる  
+2. 追加後、「コミット」ボタンを押すと、`COMMIT_EDITMSG`ファイルの編集が開く
+3. ファイル内にコミットメッセージを埋め、**「保存」** する
+4. 右上の「✓」ボタンを押すことでコミットが完了する
 
 ![](./vsc-git-commit.png)
 
@@ -242,9 +256,9 @@ jobs:
 
 (githubを使う大前提として、github上にアカウントがあり、sshの[公開鍵(`~/.ssh/id_rsa.pub`や`~/.ssh/id_ed25519.pub`など)を登録](https://docs.github.com/ja/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)してある必要がある。)
 
-- まず、github上に **空のプロジェクト** (READMEやLICENSE, .gitignoreはすべてNone)を作成し、git URLを控えておく
-- 「ソース管理」の右の「・・・」から、「リモート」- 「リモートの追加...」を選ぶ
-- 上に出るinputフォームに、先程のgit URLを設定する
+1. まず、github上に **空のプロジェクト** (READMEやLICENSE, .gitignoreはすべてNone)を作成し、git URLを控えておく
+2. 「ソース管理」の右の「・・・」から、「リモート」- 「リモートの追加...」を選ぶ
+3. 上に出るinputフォームに、先程のgit URLを設定する
 
 ![](./vsc-git-remote-add.png)
 
@@ -252,13 +266,14 @@ jobs:
 
 ![](./vsc-git-push-pull.png)
 
-`.github/workflows/gh-pages.yml`があるので、「変更の同期」をすれば、githubクラウド上でHTMLファイルが入った`gh-pages`ブランチが作られる。
+Github  Actionsのための`.github/workflows/gh-pages.yml`を含めてあるため、「変更の同期」をすれば、githubクラウド上でHTMLファイルが入った`gh-pages`ブランチが作られる。
 
 ----
 
 ### 6.1. github上のPages設定の変更
 
-初回は、github上でリポジトリトの「Settings」 - 「Pages」 - 「Branch」 で、「gh-pages」に変更する必要がある。
+Github PagesでWebサイトを使用できようにするには、初回のpushを行ってHTMLファイルのある`gh-pages`ブランチが生成されたあとで、
+github上でリポジトリトの「Settings」 - 「Pages」 - 「Branch」 で、「gh-pages」に変更する必要がある。
 
 ![](../2023-06-10-github-actions-organization-pages/pages-branch-change.png)
 
@@ -266,7 +281,9 @@ jobs:
 
 ## A. githubのssh認証設定方法
 
-PowerShellターミナルで行う(vscode内のPowerShellでも可能)。
+以降のコマンド実行は、PowerShellターミナルで行う(vscode内のPowerShell環境でも可)。
+
+- ssh関係のコマンドは標準でWindows11に入っている
 
 ### A.1. 公開鍵生成: `ssh-keygen`
 
@@ -292,7 +309,7 @@ Windows11が備えるクリップボードへのコピーを行うコマンド�
 cat ~/.ssh/id_ed25519.pub | clip
 ```
 
-このコマンドで、公開鍵ファイルの内容を、Ctrl+Vで、テキストエリアに貼り付けられるようになる。
+このコマンドを実行したら、公開鍵ファイルの内容を、Ctrl+Vで、ブラウザのテキストエリアへ貼り付けられるようになる。
 
 ### A.3. githubへ公開鍵を登録
 
@@ -303,7 +320,7 @@ cat ~/.ssh/id_ed25519.pub | clip
 ![](./gh-settings-keys.png)
 
 入力項目が「Title」、「Key type」、「Key」とあるうちの **「Key」テキストエリア** に、Ctrl+Vで先ほどコピーした公開鍵テキストを貼り付け、
-**「Add SSH key」ボタン** を押す(Titleは空欄、Key typeはAuthentication Keyのままでよい)。
+**「Add SSH key」ボタン** を押す(Titleは空欄、Key typeは"Authentication Key"のままでよい)。
 
 ![](./gh-ssh-add.png)
 
@@ -315,7 +332,7 @@ cat ~/.ssh/id_ed25519.pub | clip
 
 「同期」をすれば、リモートの更新をローカルへ反映させることができる。
 
-vscodeでは、「同期」の２つのUIがある。
+vscodeには、「同期」実行の２つのUIがある。
 
 - 「ソース管理」のメニューから「同期」を選ぶ
 - 左下の「🔄」を押す
