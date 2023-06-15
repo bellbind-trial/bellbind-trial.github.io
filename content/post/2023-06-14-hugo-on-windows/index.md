@@ -252,9 +252,7 @@ jobs:
 
 ![](./vsc-git-push-pull.png)
 
-(github上で更新があるばあいも、「変更の同期」ボタンが出る)
-
-`.github/workflows/gh-pages.yml`があるので、「変更の同期」をすれば、HTMLファイルが入った`gh-pages`ブランチが作られる。
+`.github/workflows/gh-pages.yml`があるので、「変更の同期」をすれば、githubクラウド上でHTMLファイルが入った`gh-pages`ブランチが作られる。
 
 ----
 
