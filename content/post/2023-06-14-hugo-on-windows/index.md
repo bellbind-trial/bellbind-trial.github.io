@@ -308,3 +308,18 @@ cat ~/.ssh/id_ed25519.pub | clip
 ![](./gh-ssh-add.png)
 
 すると`Authentication Keys`に公開鍵が追加される。
+
+----
+
+## B. github上の更新をvscodeで反映させる方法
+
+「同期」をすれば、リモートの更新をローカルへ反映させることができる。
+
+vscodeでは、「同期」の２つのUIがある。
+
+- 「ソース管理」のメニューから「同期」を選ぶ
+- 左下の「🔄」を押す
+
+![](./vsc-git-sync.png)
+
+----
