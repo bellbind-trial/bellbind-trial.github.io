@@ -11,6 +11,7 @@ Windows11上でHugoプロジェクトをセットアップし、Github Pagesへ�
 <!--more-->
 
 ----
+----
 
 ## 0. Windows11上での事前準備
 
@@ -26,6 +27,7 @@ Invoke-Expression "& { $(Invoke-RestMethod https://aka.ms/install-powershell.ps1
 5. Windows Terminalから、[chocolateyインストール](https://chocolatey.org/install): ページ中央にあるコマンドをコピーしてTerminalに貼り付けEnter
     - chocoコマンドがインストール済みなら、全パッケージアップグレード: `choco upgrade all -y` (入れてあったパッケージがメンテされなくなった等で更新中断の赤警告がなくなるまで繰り返す)
 
+----
 ----
 
 ## 1. 必要なchocoパッケージのインストール
@@ -54,6 +56,7 @@ choco install -y git golang hugo hugo-extended vscode
 - vscodeを入れれば、Terminalからは、`code`コマンドによって、そのディレクトリを開いたvscodeを立ち上げることができるようになる
 
 ----
+----
 
 ## 2. Visual Studio Codeのセットアップ
 
@@ -68,6 +71,7 @@ Hugoのためには、以下の拡張機能をインストールしておく:
 
 ![VSC Extensions](./vsc-extensions.png)
 
+----
 ----
 
 ## 3. Hogoプロジェクトのセットアップ
@@ -117,6 +121,7 @@ hugo server
 手元のブラウザで`http://localhost:1313/`を開いてWebページが表示されることを確認する。
 
 ----
+----
 
 ## 4. 記事の作成
 
@@ -136,6 +141,7 @@ hugo new posts/first-post/index.md
 
 このあと、各テーマの説明ページにしたがって、`hugo.toml`を編集し、カスタマイズ(最初に書いた `[module]` 部分はファイルの一番うしろに置いてよい)し、公開してもよいように調整する。
 
+----
 ----
 
 ## 5.Hugoプロジェクトをgitリポジトリ化する
@@ -257,14 +263,29 @@ git config user.email "githubへ登録したメールアドレス"
 以降、編集作業は、ファイルの追加や更新をしたあと、変更ファイルのステージ追加(5.5.)とコミット(5.6.)を繰り返すことで行う。
 
 ----
+----
 
-## 6. githubのプロジェクトページと同期させる
+## 6. github上のgitリポジトリと同期させる
 
-(githubを使う大前提として、github上にアカウントがあり、sshの[公開鍵(`~/.ssh/id_rsa.pub`や`~/.ssh/id_ed25519.pub`など)を登録](https://docs.github.com/ja/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)してある必要がある。)
+gitリポジトリの内容をgithubへpushする大前提として、github上にアカウントがあり、sshの[公開鍵(`~/.ssh/id_rsa.pub`や`~/.ssh/id_ed25519.pub`など)を登録](https://docs.github.com/ja/authentication/connecting-to-github-with-ssh/adding-a-new-ssh-key-to-your-github-account)してある必要がある。
 
-1. まず、github上に **空のプロジェクト** (READMEやLICENSE, .gitignoreはすべてNone)を作成し、git URLを控えておく
-2. 「ソース管理」の右の「・・・」から、「リモート」- 「リモートの追加...」を選ぶ
-3. 上に出るinputフォームに、先程のgit URLを設定する
+- 詳細は[付録A](#a-githubのssh認証設定方法)へ
+
+
+----
+
+### 6.1. github上で空リポジトリを作成
+
+まず、github上に **空のリポジトリ** (READMEなし、Licenseと.gitignoreはすべてNone)を作成し、git URL(`git@github.com:....`)を控えておく
+
+![](gh-new-repo.png)
+
+----
+
+### 6.2. vscodeへgithubのリポジトリのgit URLを設定
+
+1. 「ソース管理」の右の「・・・」から、「リモート」- 「リモートの追加...」を選ぶ
+2. 上に出るinputフォームに、先程のgit URLを設定する
 
 ![](./vsc-git-remote-add.png)
 
@@ -274,15 +295,18 @@ git config user.email "githubへ登録したメールアドレス"
 
 Github  Actionsのための`.github/workflows/gh-pages.yml`を含めてあるため、「変更の同期」をすれば、githubクラウド上でHTMLファイルが入った`gh-pages`ブランチが作られる。
 
+- github上の更新を取り込む方法は[付録B](#b-github上の更新をvscodeで反映させる方法)へ
+
 ----
 
-### 6.1. github上のPages設定の変更
+### 6.3. github上のPages設定のブランチ変更
 
 Github PagesでWebサイトを使用できようにするには、初回のpushを行ってHTMLファイルのある`gh-pages`ブランチが生成されたあとで、
 github上でリポジトリトの「Settings」 - 「Pages」 - 「Branch」 で、「gh-pages」に変更する必要がある。
 
 ![](../2023-06-10-github-actions-organization-pages/pages-branch-change.png)
 
+----
 ----
 
 ## A. githubのssh認証設定方法
@@ -334,6 +358,7 @@ cat ~/.ssh/id_ed25519.pub | clip
 この結果、このマシンから、githubへpushすることができるようになる。
 
 ----
+----
 
 ## B. github上の更新をvscodeで反映させる方法
 
@@ -346,4 +371,5 @@ vscodeには、「同期」実行の２つのUIがある。
 
 ![](./vsc-git-sync.png)
 
+----
 ----
