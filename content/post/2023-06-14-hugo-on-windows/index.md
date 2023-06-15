@@ -126,6 +126,7 @@ hugo server
 ## 4. 記事の作成
 
 例として、記事`posts/first-post/index.md`を作成する。
+- この例で記事名を`posts/...`にしている理由は、これがpoisonテーマが要請するサイト構造だからである。テーマによって構造化に必要な記事名のパターンが存在しているので、説明やソースの`exampleSite`を見て調べてから記事を作成すること。
 
 1. PowerShellの「+」でターミナルを追加する
 2. 新たに開いたターミナルで、`hugo new posts/first-post/index.md`を実行する
