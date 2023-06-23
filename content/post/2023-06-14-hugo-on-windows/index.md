@@ -65,7 +65,7 @@ choco install -y git golang hugo hugo-extended vscode
 Hugoのためには、以下の拡張機能をインストールしておく: 
 
 - Better TOML
-- Hogo Language and Syntax Support
+- Hugo Language and Syntax Support
 - PowerShell
 - YAML
 
@@ -74,14 +74,14 @@ Hugoのためには、以下の拡張機能をインストールしておく:
 ----
 ----
 
-## 3. Hogoプロジェクトのセットアップ
+## 3. Hugoプロジェクトのセットアップ
 
 - Githubユーザー(もしくはOrganization)名とリポジトリ名をもとに、Hugoプロジェクトの[Mod ID](../2023-06-12-hugo-mod/)(github上のプロジェクトのURLに基づくユニーク名)を決める
   - `github.com/bellbind-trial/hugo-on-windows`: 以降のHugoプロジェクト例のMod ID
-- Hogoプロジェクトにする空ディレクトリを作成する
+- Hugoプロジェクトにする空ディレクトリを作成する
   - `hugo-on-windows`: Hugoプロジェクト例のディレクトリ名
 
-vscodeを立ち上げ、、Hogoプロジェクトディレクトリを開く:  左上「≡」 -「ファイル」-「フォルダーを開く...」
+vscodeを立ち上げ、、Hugoプロジェクトディレクトリを開く:  左上「≡」 -「ファイル」-「フォルダーを開く...」
 
 ----
 
@@ -202,6 +202,7 @@ jobs:
         uses: peaceiris/actions-hugo@v2
         with:
           hugo-version: '0.113.0'
+          extended: true
 
       - name: Build
         run: hugo --minify
