@@ -182,7 +182,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     permissions:
       contents: write
     concurrency:
@@ -194,14 +194,14 @@ jobs:
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
 
       - name: Setup Go
-        uses: actions/setup-go@v4.0.0
+        uses: actions/setup-go@v4
         with:
-          go-version: '^1.20'
+          go-version: 'stable'
 
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.113.0'
+          hugo-version: 'latest'
           extended: true
 
       - name: Build
@@ -217,6 +217,8 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./public
 ```
+
+(各システムの最新版を使う設定。失敗する場合は、失敗しないバージョンで固定する。)
 
 ----
 

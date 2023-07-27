@@ -75,6 +75,8 @@ Github Actions設定は、Repository内の`.github/workflows/`以下に、処理
 
 Hugoのためのユーザー/Organization用Github Pages設定は、 https://github.com/peaceiris/actions-hugo の内容そのまま改変なしで使える。
 
+(以下は、最新バージョンを使うように変更したもの)
+
 {{<highlight yml>}}
 # .github/workflows/gh-pages.yml
 name: GitHub Pages
@@ -87,7 +89,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
@@ -99,8 +101,8 @@ jobs:
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v2
         with:
-          hugo-version: '0.113.0'
-          # extended: true
+          hugo-version: 'latest'
+          extended: true
 
       - name: Build
         run: hugo --minify
@@ -111,6 +113,8 @@ jobs:
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
 {{</highlight>}}
+
+(新しい形式である`hugo mod`ベースでの利用の場合は、[`uses: actions/setup-go`](https://github.com/actions/setup-go)のエントリーを`actions-hugo`の前に加える必要がある)
 
 {{<highlight bash>}}
 $ mkdir -p .github/workflows/
